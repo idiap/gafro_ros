@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>gafro_ros</name>
+  <version>0.0.0</version>
+  <description>The gafro_ros package</description>
+
+  <maintainer email="tobias.loew@idiap.ch">Tobias Löw</maintainer>
+  <author email="tobias.loew@idiap.ch">Tobias Löw</author>
+  
+  <license>GPLv3</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  
+  <depend>gafro</depend>
+  <depend>sackmesser_ros</depend>
+  <depend>urdf</depend>
+
+  <export>
+  </export>
+</package>

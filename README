@@ -1,0 +1,11 @@
+ROS visualization and URDF conversion for the gafro library
+
+## Installation
+
+Clone this repository to your catkin workspace in order to use it. 
+
+## Usage
+
+This command will convert a given URDF file to the YAML file format that gafro uses to load the robot descriptions.
+
+    rosrun gafro_ros convert_urdf INPUT.urdf OUTPUT.yaml

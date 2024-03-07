@@ -1,0 +1,12 @@
+target_sources(${PROJECT_NAME}
+	PRIVATE 
+		${CMAKE_CURRENT_LIST_DIR}/Point.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Visual.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Motor.cpp
+		${CMAKE_CURRENT_LIST_DIR}/PointPair.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Circle.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Line.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Plane.cpp
+		${CMAKE_CURRENT_LIST_DIR}/Sphere.cpp
+		${CMAKE_CURRENT_LIST_DIR}/System.cpp
+)
