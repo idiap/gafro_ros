@@ -32,7 +32,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 find_package(gafro REQUIRED)
-# find_package(gafro_experiments REQUIRED)
+find_package(gafro_robot_descriptions REQUIRED)
 find_package(sackmesser REQUIRED)
 
 catkin_package(

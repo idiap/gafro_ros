@@ -14,6 +14,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
 	PUBLIC
 		gafro::gafro
+		gafro_robot_descriptions::gafro_robot_descriptions
 		${catkin_LIBRARIES}
 		sackmesser::sackmesser
 		Eigen3::Eigen

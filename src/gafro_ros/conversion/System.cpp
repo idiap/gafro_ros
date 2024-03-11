@@ -30,25 +30,28 @@
 namespace gafro_ros
 {
 
-    void addLinkVisual(visualization_msgs::MarkerArray &system_visual,  //
+    void addLinkVisual(const gafro::SystemVisual *system,               //
+                       visualization_msgs::MarkerArray &system_visual,  //
                        const gafro::Link<double> *link,                 //
                        const gafro::Motor<double> &motor,               //
                        int &id,                                         //
                        const std::string &frame,                        //
                        const Eigen::VectorXd &joint_positions)
     {
-        if (link->getVisual())
+        if (system->hasVisual(link->getName()))
         {
-            visualization_msgs::Marker visual = convertToMarker(link->getVisual());
+            const gafro::Visual *visual = system->getVisual(link->getName());
 
-            visual.pose = convertToPose(motor * link->getVisual()->getTransform());
+            visualization_msgs::Marker visual_marker = convertToMarker(visual);
 
-            visual.header.frame_id = frame;
-            visual.header.stamp = ros::Time::now();
-            visual.ns = link->getName();
-            visual.id = static_cast<int>(system_visual.markers.size());
+            visual_marker.pose = convertToPose(motor * visual->getTransform());
 
-            system_visual.markers.push_back(visual);
+            visual_marker.header.frame_id = frame;
+            visual_marker.header.stamp = ros::Time::now();
+            visual_marker.ns = link->getName();
+            visual_marker.id = static_cast<int>(system_visual.markers.size());
+
+            system_visual.markers.push_back(visual_marker);
         }
 
         for (const auto *child_joint : link->getChildJoints())
@@ -64,7 +67,8 @@ namespace gafro_ros
                         joint_position = joint_positions[id];
                     }
 
-                    addLinkVisual(system_visual,                                  //
+                    addLinkVisual(system,                                         //
+                                  system_visual,                                  //
                                   child_joint->getChildLink(),                    //
                                   motor * child_joint->getMotor(joint_position),  //
                                   ++id,                                           //
@@ -73,7 +77,8 @@ namespace gafro_ros
                 }
                 else
                 {
-                    addLinkVisual(system_visual,                       //
+                    addLinkVisual(system,                              //
+                                  system_visual,                       //
                                   child_joint->getChildLink(),         //
                                   motor * child_joint->getMotor(0.0),  //
                                   id,                                  //
@@ -84,7 +89,7 @@ namespace gafro_ros
         }
     }
 
-    visualization_msgs::MarkerArray convertToMarker(const gafro::System<double> &system,     //
+    visualization_msgs::MarkerArray convertToMarker(const gafro::SystemVisual *system,       //
                                                     const Eigen::VectorXd &joint_positions,  //
                                                     gafro::Motor<double> base_motor,         //
                                                     const std::string &frame)
@@ -92,11 +97,12 @@ namespace gafro_ros
         visualization_msgs::MarkerArray system_visual;
 
         int id = 0;
-        addLinkVisual(system_visual,                    //
-                      system.getLinks().front().get(),  //
-                      base_motor,                       //
-                      id,                               //
-                      frame,                            //
+        addLinkVisual(system,                            //
+                      system_visual,                     //
+                      system->getLinks().front().get(),  //
+                      base_motor,                        //
+                      id,                                //
+                      frame,                             //
                       joint_positions);
 
         return system_visual;

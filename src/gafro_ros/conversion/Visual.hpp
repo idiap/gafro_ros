@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/serialization/Visual.hpp>
+#include <gafro_robot_descriptions/serialization/Visual.hpp>
 
 namespace gafro_ros
 {

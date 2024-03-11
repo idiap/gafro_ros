@@ -17,7 +17,7 @@
     along with gafro. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <gafro/serialization/FilePath.hpp>
+#include <gafro_robot_descriptions/serialization/FilePath.hpp>
 #include <gafro_ros/conversion/Visual.hpp>
 
 namespace gafro_ros
@@ -36,6 +36,7 @@ namespace gafro_ros
             marker.scale.x = sphere->getRadius();
             marker.scale.y = sphere->getRadius();
             marker.scale.z = sphere->getRadius();
+            marker.mesh_use_embedded_materials = false;
 
             break;
         }
@@ -47,6 +48,7 @@ namespace gafro_ros
             marker.scale.x = mesh->getScaleX();
             marker.scale.y = mesh->getScaleY();
             marker.scale.z = mesh->getScaleZ();
+            marker.mesh_use_embedded_materials = true;
 
             break;
         }
@@ -57,6 +59,7 @@ namespace gafro_ros
             marker.scale.x = 2.0 * cylinder->getRadius();
             marker.scale.y = 2.0 * cylinder->getRadius();
             marker.scale.z = cylinder->getLength();
+            marker.mesh_use_embedded_materials = false;
 
             break;
         }
@@ -68,6 +71,7 @@ namespace gafro_ros
             marker.scale.x = box->getDimX();
             marker.scale.y = box->getDimY();
             marker.scale.z = box->getDimZ();
+            marker.mesh_use_embedded_materials = false;
 
             break;
         }

@@ -19,14 +19,14 @@
 
 #pragma once
 
-#include <gafro/robot/System.hpp>
+#include <gafro_robot_descriptions/SystemVisual.hpp>
 //
 #include <visualization_msgs/MarkerArray.h>
 
 namespace gafro_ros
 {
 
-    visualization_msgs::MarkerArray convertToMarker(const gafro::System<double> &system,     //
+    visualization_msgs::MarkerArray convertToMarker(const gafro::SystemVisual *system,       //
                                                     const Eigen::VectorXd &joint_positions,  //
                                                     gafro::Motor<double> base_motor,         //
                                                     const std::string &frame);

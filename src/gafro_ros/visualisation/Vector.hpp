@@ -19,47 +19,37 @@
 
 #pragma once
 
-#include <visualization_msgs/MarkerArray.h>
+#include <visualization_msgs/Marker.h>
 
-#include <Eigen/Geometry>
+#include <gafro/algebra/Vector.hpp>
 #include <sackmesser_ros/Publisher.hpp>
-
-namespace gafro
-{
-    class SystemVisual;
-}
 
 namespace gafro_ros::visualisation
 {
-    class System : public sackmesser_ros::Publisher<visualization_msgs::MarkerArray, Eigen::MatrixXd, gafro::Motor<double>>
+    class Vector : public sackmesser_ros::Publisher<visualization_msgs::Marker, gafro::Vector<double>, gafro::Vector<double>>
     {
       public:
-        System(const std::string &name, sackmesser_ros::Interface *interface);
+        Vector(const std::string &name, sackmesser_ros::Interface *interface);
 
-        ~System();
+        ~Vector();
 
+        visualization_msgs::Marker createMessage(const gafro::Vector<double> &v1, const gafro::Vector<double> &v2) const;
+
+      protected:
+      private:
         struct Configuration : public sackmesser::Configuration
         {
             bool load(const std::string &ns, const std::shared_ptr<sackmesser::Configurations> &server);
 
-            std::string description;
-
             std::string frame;
-
-            double color_r = 1.0;
-            double color_g = 1.0;
-            double color_b = 1.0;
-            double color_a = 1.0;
+            double radius = 0.0;
+            double color_r = 0.0;
+            double color_g = 0.0;
+            double color_b = 0.0;
+            double color_a = 0.0;
         };
 
-        visualization_msgs::MarkerArray createMessage(const Eigen::MatrixXd &position,
-                                                      const gafro::Motor<double> &base = gafro::Motor<double>()) const;
-
-      protected:
-      private:
         Configuration config_;
-
-        std::unique_ptr<gafro::SystemVisual> system_;
     };
 
 }  // namespace gafro_ros::visualisation
