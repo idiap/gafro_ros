@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/Line.hpp>
+#include <gafro/algebra/cga/Line.hpp>
 
 namespace gafro_ros
 {

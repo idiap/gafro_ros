@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/MarkerArray.h>
 
-#include <gafro/algebra/Line.hpp>
+#include <gafro/algebra/cga/Line.hpp>
 #include <sackmesser_ros/Publisher.hpp>
 
 namespace gafro_ros::visualisation

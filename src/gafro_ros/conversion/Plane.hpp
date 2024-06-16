@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/Plane.hpp>
+#include <gafro/algebra/cga/Plane.hpp>
 
 namespace gafro_ros
 {

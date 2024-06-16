@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/Sphere.hpp>
+#include <gafro/algebra/cga/Sphere.hpp>
 
 namespace gafro_ros
 {
