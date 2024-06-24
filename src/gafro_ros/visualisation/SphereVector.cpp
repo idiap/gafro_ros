@@ -17,7 +17,6 @@
     along with gafro. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <gafro/algebra/Sphere.hpp>
 #include <gafro_ros/conversion/Sphere.hpp>
 #include <gafro_ros/visualisation/SphereVector.hpp>
 

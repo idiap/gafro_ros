@@ -17,7 +17,6 @@
     along with gafro. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <gafro/algebra/Point.hpp>
 #include <gafro_ros/conversion/Point.hpp>
 #include <gafro_ros/visualisation/PointVector.hpp>
 

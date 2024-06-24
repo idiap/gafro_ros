@@ -60,12 +60,7 @@ namespace gafro_ros
             {
                 if (child_joint->isActuated())
                 {
-                    double joint_position = 0.0;
-
-                    if (id < joint_positions.rows())
-                    {
-                        joint_position = joint_positions[id];
-                    }
+                    double joint_position = joint_positions[child_joint->getIndex()];
 
                     addLinkVisual(system,                                         //
                                   system_visual,                                  //

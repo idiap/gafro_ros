@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/MarkerArray.h>
 
-#include <gafro/algebra/Circle.hpp>
+#include <gafro/algebra/cga/Circle.hpp>
 #include <sackmesser_ros/Publisher.hpp>
 
 namespace gafro_ros::visualisation

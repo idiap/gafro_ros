@@ -27,11 +27,9 @@ namespace gafro_ros
     {
         geometry_msgs::Point point_msg;
 
-        Eigen::Vector3d p = point.vector().topRows(3);
-
-        point_msg.x = p[0];
-        point_msg.y = p[1];
-        point_msg.z = p[2];
+        point_msg.x = point.get<gafro::blades::e1>();
+        point_msg.y = point.get<gafro::blades::e2>();
+        point_msg.z = point.get<gafro::blades::e3>();
 
         return point_msg;
     }

@@ -19,21 +19,27 @@
 
 #pragma once
 
-#include <visualization_msgs/Marker.h>
+#include <visualization_msgs/MarkerArray.h>
 
-#include <gafro/algebra/cga/Circle.hpp>
+#include <gafro/algebra/cga/Point.hpp>
+#include <gafro/algebra/cga/Vector.hpp>
 #include <sackmesser_ros/Publisher.hpp>
+
+namespace gafro
+{
+    using VectorField = std::function<gafro::Vector<double>(const gafro::Point<double> &)>;
+}
 
 namespace gafro_ros::visualisation
 {
-    class Circle : public sackmesser_ros::Publisher<visualization_msgs::Marker, gafro::Circle<double>>
+    class VectorField : public sackmesser_ros::Publisher<visualization_msgs::MarkerArray, std::vector<gafro::Point<double>>, gafro::VectorField>
     {
       public:
-        Circle(const std::string &name, sackmesser_ros::Interface *interface);
+        VectorField(const std::string &name, sackmesser_ros::Interface *interface);
 
-        ~Circle();
+        ~VectorField();
 
-        visualization_msgs::Marker createMessage(const gafro::Circle<double> &circle) const;
+        visualization_msgs::MarkerArray createMessage(const std::vector<gafro::Point<double>> &points, const gafro::VectorField &field) const;
 
       protected:
       private:
@@ -42,7 +48,7 @@ namespace gafro_ros::visualisation
             bool load(const std::string &ns, const std::shared_ptr<sackmesser::Configurations> &server);
 
             std::string frame;
-            double scale = 0.0;
+            double radius = 0.0;
             double color_r = 0.0;
             double color_g = 0.0;
             double color_b = 0.0;

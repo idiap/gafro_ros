@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/PointPair.hpp>
+#include <gafro/algebra/cga/PointPair.hpp>
 #include <vector>
 
 namespace gafro_ros

@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/Circle.hpp>
+#include <gafro/algebra/cga/Circle.hpp>
 
 namespace gafro_ros
 {
