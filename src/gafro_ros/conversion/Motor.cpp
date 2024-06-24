@@ -77,8 +77,8 @@ namespace gafro_ros
         r.ns = "x";
         r.id = id++;
         r.type = visualization_msgs::Marker::ARROW;
-        r.scale.x = 0.005f;
-        r.scale.y = 0.01f;
+        r.scale.x = 0.001f;
+        r.scale.y = 0.002f;
         r.scale.z = 0.0f;
         r.color.r = 1.0f;
         r.color.g = 0.0f;
@@ -100,8 +100,8 @@ namespace gafro_ros
         g.ns = "y";
         g.id = id++;
         g.type = visualization_msgs::Marker::ARROW;
-        g.scale.x = 0.005f;
-        g.scale.y = 0.01f;
+        g.scale.x = 0.001f;
+        g.scale.y = 0.002f;
         g.scale.z = 0.0f;
         g.color.r = 0.0f;
         g.color.g = 2.0f;
@@ -123,8 +123,8 @@ namespace gafro_ros
         b.ns = "z";
         b.id = id++;
         b.type = visualization_msgs::Marker::ARROW;
-        b.scale.x = 0.005f;
-        b.scale.y = 0.01f;
+        b.scale.x = 0.001f;
+        b.scale.y = 0.002f;
         b.scale.z = 0.0f;
         b.color.r = 0.0f;
         b.color.g = 0.0f;
