@@ -23,7 +23,7 @@
 #include <tf/LinearMath/Transform.h>
 #include <visualization_msgs/MarkerArray.h>
 
-#include <gafro/algebra/Motor.hpp>
+#include <gafro/algebra/cga/Motor.hpp>
 
 namespace gafro_ros
 {

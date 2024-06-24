@@ -21,7 +21,7 @@
 
 #include <visualization_msgs/Marker.h>
 
-#include <gafro/algebra/Sphere.hpp>
+#include <gafro/algebra/cga/Sphere.hpp>
 #include <sackmesser_ros/Publisher.hpp>
 
 namespace gafro_ros::visualisation

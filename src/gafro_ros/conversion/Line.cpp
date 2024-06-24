@@ -29,12 +29,20 @@ namespace gafro_ros
     {
         visualization_msgs::Marker line_msg;
 
-        gafro::PointPair<double> pp = (gafro::Scalar<double>(-1.0) * (gafro::Line<double>(line) | gafro::E0<double>(1.0)).evaluate() +
-                                       gafro::E0i<double>(0.5 * line.norm()) + gafro::Multivector<double, 9, 10, 11>({ 0.0, 0.0, 0.0 }))
-                                        .evaluate();
+        auto expr = gafro::Scalar<double>(-1.0) * (line | gafro::E0<double>(1.0)).evaluate() + gafro::E0i<double>(0.5 * line.norm());
 
-        Eigen::Vector3d p1 = pp.getPoint1().vector().topRows(3);
-        Eigen::Vector3d p2 = pp.getPoint2().vector().topRows(3);
+        gafro::PointPair<double> pp;
+
+        pp.set<3>(expr.get<3>());
+        pp.set<5>(expr.get<5>());
+        pp.set<6>(expr.get<6>());
+        pp.set<9>(expr.get<9>());
+        pp.set<10>(expr.get<10>());
+        pp.set<12>(expr.get<12>());
+        pp.set<17>(expr.get<17>());
+
+        Eigen::Vector3d p1 = pp.getPoint1().vector().middleRows(1, 3);
+        Eigen::Vector3d p2 = pp.getPoint2().vector().middleRows(1, 3);
 
         Eigen::Vector3d direction = (p2 - p1).normalized();
 

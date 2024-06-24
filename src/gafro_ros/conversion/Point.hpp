@@ -21,7 +21,7 @@
 
 #include <geometry_msgs/Point.h>
 
-#include <gafro/algebra/Point.hpp>
+#include <gafro/algebra/cga/Point.hpp>
 
 namespace gafro_ros
 {
